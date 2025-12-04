@@ -1,0 +1,85 @@
+@charset "utf-8";
+@import "https://unpkg.com/ress/dist/ress.min.css";
+
+* {
+  box-sizing: border-box;
+}
+
+/*===== ギャラリーのためのCSS ===== */
+.gallery {
+  columns: 4;
+  padding: 0 15px;
+}
+
+.gallery li {
+  margin-bottom: 20px;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  vertical-align: bottom;
+}
+
+/* 横幅900px以下のスタイル */
+@media only screen and (max-width: 900px) {
+  .gallery {
+    columns: 3;
+  }
+ /* 横幅768px以下のスタイル */
+ @media only screen and (max-width:768px) {
+  .gallery {
+    columns: 2;
+  }
+ }
+}
+/*===== レイアウトのためのCSS ===== */
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+a {
+color: #333;
+}
+
+a:hover,
+a:active {
+  text-decoration: none;
+}
+
+h1 {
+  text-align: center;
+  font-size: 6vw;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin: 30px 0;
+}
+
+p {
+  margin: 0 10px 10px 10px;
+  word-wrap: break-word;
+}
+
+/*===== 画像を出現させるアニメーションCSS =====*/
+
+.flipLeft {
+  animation-name: flipLeft;         /* 使用するアニメーション名 */
+  animation-duration: 0.5s;         /* アニメーションの再生時間 */
+  animation-fill-mode: forwards;    /* 終了後に状態を保持する */
+  perspective-origin: left center;  /* 立体回転の基準位置を指定 */
+  opacity: 0;                        /* 初期状態は透明 */
+}
+
+/* 左からふわっと回転してくるアニメーション定義 */
+@keyframes flipLeft {
+  from {
+    transform: perspective(600px) translate3d(0, 0, 0) rotateY(30deg); /* 30度傾けた状態から開始 */
+    opacity: 0;  /* 透明 */
+  }
+
+  to {
+    transform: perspective(600px) translate3d(0, 0, 0) rotateY(0deg); /* 正面の位置へ */
+    opacity: 1; /* 不透明に */
+  }
+}
